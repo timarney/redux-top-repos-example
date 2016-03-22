@@ -1,0 +1,78 @@
+$dark: #343436;
+$highlight: #4ECDC4;
+$button-txt-color: #fafafa;
+$button-bkd-color: #4ECDC4;
+
+html{
+  font-family:"Helvetica Neue",Helvetica;
+}
+
+body{
+  margin:0;
+}
+
+#repo-loader{
+  background-color:$dark;
+  padding:1em;
+  h2{
+    margin-top:0;
+    color:$highlight;
+    margin-bottom:.2em;
+  }
+
+  a{
+    color:#fff;
+    display:inline-block;
+    text-decoration: none;
+  }
+
+  a.more{
+    margin:0 1em;
+
+    &:hover{
+      color:$highlight;
+    }
+  }
+
+  a.button{
+      box-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+      font-size: 24px;
+      background: $button-bkd-color;
+      color: $button-txt-color;
+      border-radius: 4px;
+      padding: 8px 16px;
+      margin-right:12px;
+      display: inline-block;
+      text-decoration: none;
+
+      &:hover{
+        background: darken($button-bkd-color,10%);
+      }
+
+      &.disabled{
+        background: rgba($button-bkd-color, .2 );
+        color: rgba($button-txt-color, .2 );
+        cursor:default;
+      }
+  }
+
+  .stats{
+    color:#fff;
+    margin-bottom:10px;
+    .fa-star{
+      color:yellow;
+    }
+
+    .fa-arrow-up{
+      color:green;
+    }
+
+    .stars{
+      margin-right:1em;
+    }
+  }
+}
+
+.loader{
+  margin:1em;
+}
