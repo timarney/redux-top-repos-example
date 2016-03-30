@@ -13,10 +13,12 @@ function items(state = { num: 0 }, action) {
 
 function repo(state = {}, action) {
   switch (action.type) {
+    case 'INCREMENT':
+      return Object.assign({}, state, { json: {} });
     case 'REPO_JSON':
       return Object.assign({}, state, { json: action.json });
     case 'IS_LOADING':
-      return Object.assign({}, state, { isLoading: action.isLoading });
+      return Object.assign({}, state, { isLoading: action.isLoading, json: {} });
     default:
       return state;
   }
