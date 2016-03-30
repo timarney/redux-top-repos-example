@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   render() {
-    const { onNext, onPrevious, num, loading, data } = this.props;
+    const { onNext, onPrevious, num, loading, data, getDetails, json } = this.props;
 
     let spinner = '';
     if (loading) {
@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <div>
         <div id="repo-loader">
-          <Title text={title} stars={stars} up={up} />
+          <Title text={title} stars={stars} up={up} getDetails={ getDetails} />
           <a href="#" className={previousClass} onClick={ onPrevious }>
             <Icon name="arrow-left" /> Previous
           </a>
@@ -47,6 +47,7 @@ class App extends Component {
         <div className="loader">
         {spinner}
         </div>
+        {json}
       </div>
    );
   }
@@ -57,15 +58,17 @@ App.propTypes = {
   num: PropTypes.number.isRequired,
   onNext: PropTypes.func.isRequired,
   onPrevious: PropTypes.func.isRequired,
-  getRepo: PropTypes.func.isRequired,
+  getDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
   const num = state.items.num;
   const data = state.items.data;
-  const loading = state.repos.isLoading;
+  const loading = state.repo.isLoading;
+  const json = state.repo.json;
+
   return {
-    num, loading, data,
+    num, loading, data, json
   };
 };
 
@@ -74,7 +77,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
   {
     onNext: increment,
     onPrevious: decrement,
-    getRepo: loadRepo,
+    getDetails: loadRepo,
   },
 
   dispatch);

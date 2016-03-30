@@ -1,28 +1,34 @@
-function countRepos(jsonResult) {
-  return { type: 'COUNT_REPOS', repos: jsonResult };
+function repoJson(jsonResult) {
+  return { type: 'REPO_JSON', json: jsonResult };
 }
 
 function loadingChanged(isLoading) {
   return { type: 'IS_LOADING', isLoading };
 }
 
-export function loadRepo(urlParam) {
+export function loadRepo() {
   return (dispatch, getState) => {
     dispatch(loadingChanged(true));
-    const user = getState().repos.user;
-    const url = `https://api.github.com/users/${user}/repos`;
+
+    const items = getState().items;
+    const repo = items.data[items.num].text;
+    const url = `https://api.github.com/repos/${repo}`;
+    console.log(url);
+
     return fetch(url)
-      .then((response) => {
-        const json = response.json();
-        if (!response.ok) return {};
-        return json;
-      })
-      .then((json) => {
-        dispatch(loadingChanged(false));
-        console.log(json);
-        dispatch(countRepos(json));
-      });
+        .then((response) => {
+          const json = response.json();
+          if (!response.ok) return {};
+          return json;
+        })
+        .then((json) => {
+          dispatch(loadingChanged(false));
+          console.log(json);
+          dispatch(repoJson(json));
+        });
+
   };
+
 }
 
 function doIncrement() {

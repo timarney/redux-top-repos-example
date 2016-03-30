@@ -8,7 +8,7 @@ import App from './components/App';
 require('./css/app.scss');
 
 const initialState = { items: { num: 0, data },
-                       repos: { user: 'timarney', isLoading: false, count: 0 },
+                       repo: { json: {}, isLoading: false},
                      };
 
 const store = configureStore(initialState);

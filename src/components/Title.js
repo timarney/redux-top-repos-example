@@ -7,14 +7,14 @@ export default class Title extends Component {
   }
 
   render() {
-    const { text, stars, up } = this.props;
+    const { text, stars, up, getDetails } = this.props;
 
     return (
       <div className="stats">
         <h2>{text}</h2>
         <span className="stars"><Icon name="star" /> {stars} </span>
         <span className="up"><Icon name="arrow-up" /> {up}</span>
-        <a href="#" className="more">more details</a>
+        <a href="#" onClick={ getDetails } className="more">more details</a>
       </div>
    );
   }
