@@ -47,7 +47,6 @@ class App extends Component {
         <div className="loader">
         {spinner}
         </div>
-        {json}
       </div>
    );
   }
