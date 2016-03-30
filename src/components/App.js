@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import Icon from 'react-fa';
 import Title from './Title';
+import Connect from './Connect';
 import { increment, decrement, loadRepo } from '../actions/index';
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
       <code>
         {JSON.stringify(json, null, 4)}
       </code>
+      <Connect />
     </pre>
       </div>
    );
