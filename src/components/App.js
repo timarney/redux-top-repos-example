@@ -47,6 +47,11 @@ class App extends Component {
         <div className="loader">
         {spinner}
         </div>
+        <pre>
+      <code>
+        {JSON.stringify(json, null, 4)}
+      </code>
+    </pre>
       </div>
    );
   }
